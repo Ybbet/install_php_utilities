@@ -1,0 +1,22 @@
+#####
+# Il faut exécuter la commande suivante pour la bonne prise en compte de ce présent fichier (sans le "# ") :
+# sudo nano /etc/bashrc
+# Ajouter la ligne suivante à la fin du fichier (sans le "# ") :
+# source $HOME/profile-dev
+#####
+
+export CLICOLOR=1
+export TOOLS=$HOME/outils
+export PATH=$PATH:$TOOLS:$TOOLS/vendor/bin
+
+export SVN_EDITOR=nano
+# Toujours afficher le path complet dans le terminal
+export PS1='\u@\H:\w$ '
+MAMP=/Applications/MAMP/
+if [[ -d $MAMP ]];
+   then
+       export MAMP_PATH_PHP_BIN=/Applications/MAMP/bin/php/$(ls /Applications/MAMP/bin/php/ | tail -n 1)/bin
+       # Ajout des bin PHP de MAMP dans le PATH
+       export PATH="$MAMP_PATH_PHP_BIN:/Applications/MAMP/Library/bin/:$PATH"
+fi
+
