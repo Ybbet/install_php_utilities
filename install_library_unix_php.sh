@@ -138,6 +138,125 @@ if [[ $phpdoc =~ ^phpDocumentor* ]];
         echo "### 'phpDocumentor' a bien été installé."
         which phpdoc
 fi
+echo
+nodejs=$(node --version)
+if [[ $nodejs =~ ^v* ]];
+    then
+        echo "### 'Node JS' est bien installé dans le répertoire :"
+        which node
+        echo $nodejs
+        sudo composer update mouf/nodejs-installer
+        echo "### Il a été mis à jour avec composer."
+    else
+        echo "### 'Node JS' n'est pas bien installé. On lance son installation par composer :"
+        sudo composer require "mouf/nodejs-installer:1.*"
+        sudo composer install mouf/nodejs-installer
+        echo "### 'Node JS' a bien été installé."
+        which node
+fi
+echo
+echo "### Node JS étant installé, nous allons installé Grunt et ses plugins"
+sudo npm install -g grunt-cli
+echo "### Installation du plugin Grunt-SASS"
+sudo npm install grunt-contrib-sass --save-dev
+echo "### Installation du plugin JShint pour Grunt"
+sudo npm install grunt-contrib-jshint --save-dev
+echo "### Installation du plugin UglifyJS pour Grunt"
+sudo npm install grunt-contrib-uglify --save-dev
+echo "### Installation du plugin Pleeease pour Grunt"
+sudo npm install grunt-pleeease --save-dev
+echo "### Installation du plugin HTML-Validation pour Grunt"
+sudo npm install grunt-html-validation --save-dev
+echo "### Installation du plugin Minify HTML pour Grunt"
+sudo npm install grunt-contrib-htmlmin --save-dev
+echo "### Installation du plugin Minify CSS pour Grunt"
+sudo npm install grunt-contrib-cssmin --save-dev
+echo "### Installation du plugin Watcher pour Grunt"
+sudo npm install grunt-contrib-watch --save-dev
+echo "### Installation du plugin Tasks pour Grunt"
+sudo npm install --save-dev load-grunt-tasks
+echo "### Installation du plugin Tasks pour Grunt"
+sudo npm install gulp
+phpcpd=$(phpcpd --version)
+if [[ $phpcpd =~ ^phpcpd* ]];
+    then
+        echo "### 'PHPCPD' est bien installé dans le répertoire :"
+        which phpcpd
+        echo $phpcpd
+        sudo composer update sebastian/phpcpd
+        echo "### Il a été mis à jour avec composer."
+    else
+        echo "### 'PHPCPD' n'est pas bien installé. On lance son installation par composer :"
+        sudo composer require "sebastian/phpcpd:*"
+        sudo composer install sebastian/phpcpd
+        echo "### 'PHPCPD' a bien été installé."
+        which phpcpd
+fi
+echo
+phpdcd=$(phpdcd --version)
+if [[ $phpdcd =~ ^phpdcd* ]];
+    then
+        echo "### 'phpdcd' (Dead Code Detector for PHP code) est bien installé dans le répertoire :"
+        which phpdcd
+        echo $phpdcd
+        sudo composer update sebastian/phpdcd
+        echo "### Il a été mis à jour avec composer."
+    else
+        echo "### 'phpdcd' (Dead Code Detector for PHP code) n'est pas bien installé. On lance son installation par composer :"
+        sudo composer require "sebastian/phpdcd:*"
+        sudo composer install sebastian/phpdcd
+        echo "### 'phpdcd' a bien été installé."
+        which phpdcd
+fi
+echo
+phploc=$(phploc --version)
+if [[ $phploc =~ ^phploc* ]];
+    then
+        echo "### 'phploc' est bien installé dans le répertoire :"
+        which phploc
+        echo $phploc
+        sudo composer update phploc/phploc
+        echo "### Il a été mis à jour avec composer."
+    else
+        echo "### 'phploc' n'est pas bien installé. On lance son installation par composer :"
+        sudo composer require "phploc/phploc:*"
+        sudo composer install phploc/phploc
+        echo "### 'phploc' a bien été installé."
+        which phploc
+fi
+echo
+phploc=$(phploc --version)
+if [[ $phploc =~ ^phploc* ]];
+    then
+        echo "### 'phploc' est bien installé dans le répertoire :"
+        which phploc
+        echo $phploc
+        sudo composer update phploc/phploc
+        echo "### Il a été mis à jour avec composer."
+    else
+        echo "### 'phploc' n'est pas bien installé. On lance son installation par composer :"
+        sudo composer require "phploc/phploc:*"
+        sudo composer install phploc/phploc
+        echo "### 'phploc' a bien été installé."
+        which phploc
+fi
+echo
+ruby_ok=$(ruby --version)
+if [[ $ruby_ok =~ ^ruby* ]];
+    then
+        echo "### 'Ruby' est bien installé dans le répertoire :"
+        which ruby_ok
+        echo $ruby_ok
+        echo "### Mise à jour de l'environnement de Ruby"
+        sudo gem update --system
+        echo "### On installe SASS"
+        sudo gem install sass
+        echo "### On installe Compass"
+        sudo gem install compass
+        echo "### Maintenant, nous allons installer des plugins pour Compass"
+    else
+        echo "### 'Ruby' n'est pas bien installé."
+fi
 # echo
 # On ne va pas installer behat pour la machine. On l'installera à chaque projet.
 # behat=$(behat --version)

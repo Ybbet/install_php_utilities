@@ -14,9 +14,10 @@ export SVN_EDITOR=nano
 export PS1='\u@\H:\w$ '
 MAMP=/Applications/MAMP/
 if [[ -d $MAMP ]];
-   then
-       export MAMP_PATH_PHP_BIN=/Applications/MAMP/bin/php/$(ls /Applications/MAMP/bin/php/ | tail -n 1)/bin
-       # Ajout des bin PHP de MAMP dans le PATH
-       export PATH="$MAMP_PATH_PHP_BIN:/Applications/MAMP/Library/bin/:$PATH"
+    then
+        # On ajoute le path vers MAMP. On prend l'avant-dernière version de PHP fournis par MAMP, tout le monde n'utilise pas PHP 7 dans ses projets.
+        export MAMP_PATH_PHP_BIN=/Applications/MAMP/bin/php/$(ls /Applications/MAMP/bin/php/ | tail -n 2 | head -1)/bin
+        # Ajout des bin PHP de MAMP dans le PATH
+        export PATH="$MAMP_PATH_PHP_BIN:/Applications/MAMP/Library/bin:$PATH"
 fi
 
